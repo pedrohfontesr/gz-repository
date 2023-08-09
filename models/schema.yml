@@ -1,0 +1,31 @@
+version: 2
+
+models:
+
+    - name: sales
+      Description: Database that shows all relevant data related to the sales in a timespace.
+      tests:
+        - unique:
+            column_name: "(orders_id || '-' || products_id)"
+        - not_null:
+            column_name: "(products_id || '-' || turnover || '-' || purchase_cost)"
+            
+      columns:
+          - name: orders_id
+            Description: Identification of each order made.
+            tests : 
+            - not_null 
+
+          - name: products_id
+            Description: Identification of each product.
+
+          - name: qty
+
+          - name: turnover
+            Description: The entire revenue in a spacetime.
+
+          - name: purchase_cost
+            Description: The cost related to the incomes to produce the related product.
+
+          - name: margin
+            Description: Difference between turnover and purchase_cost.
